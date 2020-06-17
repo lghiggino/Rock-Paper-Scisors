@@ -57,23 +57,17 @@ function comparePlay(playerPlay, computerPlay){
     }
 }
 
-/* partial score counter message
-function partialScore(){
-   console.log(`The current score is player ${playerScore} vs computer ${computerScore}`)
-}*/
-
 /* play one round */
 function quickRound() {
     console.log(comparePlay(playerPlay(), computerPlay()));
     
 }    
 
-/* play best of 5 in a row */
+/* play 5 in a row - will need to figure out how to make it best of five, so that it stops at 3 wins or goes to 5 rounds.*/
     function game(){
         let i = 0;
         for (i=0; i<5; i++){
         quickRound();}
-        /*console.log(partialScore());*/
         gameWinner();
     }
 
