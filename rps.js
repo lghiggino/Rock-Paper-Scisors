@@ -1,5 +1,9 @@
+ let playerScore=0;
+ let computerScore=0;
+ 
+ 
  /* get computer selection */
- function computerPlay(){
+function computerPlay(){
     let computerSelection;
     let randomNumber = Math.random();
 
@@ -9,17 +13,17 @@
     else if (randomNumber <= (2/3)){
         computerSelection = "paper";
     }
-    else computerSelection = "scisors";
-    console.log(`computerPlay é ${computerSelection}`);
+    else computerSelection = "scissors";
+    /*console.log(`computerPlay is ${computerSelection}`);*/
     return computerSelection;
 }
 
 /* get player selection */
 function playerPlay (){
-    let playerSelection = prompt(`Rock, Paper, or Scissors?`, '').toLowerCase();
-console.log(`playerPlay é ${playerSelection}`);
-return playerSelection;
-}
+    let playerSelection = prompt(`type: Rock, Paper, or Scissors?`, '').toLowerCase();
+    /*console.log(`playerPlay is ${playerSelection}`);*/
+    return playerSelection;
+    }
 
 /* compare computer and players's selection */
 function comparePlay(playerPlay, computerPlay){
@@ -27,32 +31,62 @@ function comparePlay(playerPlay, computerPlay){
 
     switch (true){
         case playerPlay === computerPlay:
-            result = "Its a tie";
+            result = `Its a tie. Player chose ${playerPlay} and computer chose ${computerPlay}.`;
             return result;
             break;
 
-        case playerPlay === "rock" && computerPlay === "scisors":
-        case playerPlay === "scisors" && computerPlay === "paper":
+        case playerPlay === "rock" && computerPlay === "scissors":
+        case playerPlay === "scissors" && computerPlay === "paper":
         case playerPlay === "paper" && computerPlay === "rock":
-            result = `Player wins. Player chose ${playerPlay} and computer chose ${computerPlay}. Player wins.`
+            result = `Player wins. Player chose ${playerPlay} and computer chose ${computerPlay}.`;
+            playerScore++;
             return result;
             break;
         case playerPlay === "rock" && computerPlay === "paper":
-        case playerPlay === "scisors" && computerPlay === "rock":
-        case playerPlay === "paper" && computerPlay === "scisors":
-            result = `Computer wins. Player chose ${playerPlay} and computer chose ${computerPlay}. `
+        case playerPlay === "scissors" && computerPlay === "rock":
+        case playerPlay === "paper" && computerPlay === "scissors":
+            result = `Computer wins. Player chose ${playerPlay} and computer chose ${computerPlay}.`;
+            computerScore++;
             return result;
             break; 
         
         default: playerPlay != null && playerPlay != "" && playerPlay != undefined
-            result = "Your choice is not valid. please choose between rock, paper or scisors"
+            result = "Your choice is not valid. please choose between rock, paper or scissors"
             return result;
             break;
     }
 }
 
+/* partial score counter message
+function partialScore(){
+   console.log(`The current score is player ${playerScore} vs computer ${computerScore}`)
+}*/
 
 /* play one round */
 function quickRound() {
     console.log(comparePlay(playerPlay(), computerPlay()));
+    
 }    
+
+/* play best of 5 in a row */
+    function game(){
+        let i = 0;
+        for (i=0; i<5; i++){
+        quickRound();}
+        /*console.log(partialScore());*/
+        gameWinner();
+    }
+
+/*winning condition */
+function gameWinner() {
+    if (playerScore > computerScore) {
+        console.log(`Game over. Player won ${playerScore} to ${computerScore}`);
+    }
+    else if(computerScore > playerScore){
+        console.log(`Game over. Computer won ${computerScore} to ${playerScore}`);
+    }
+
+    else console.log("Its a tie game.");
+    playerScore = 0;
+    computerScore = 0;
+}
