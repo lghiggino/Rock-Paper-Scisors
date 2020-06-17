@@ -42,6 +42,7 @@ function comparePlay(playerPlay, computerPlay){
             playerScore++;
             return result;
             break;
+            
         case playerPlay === "rock" && computerPlay === "paper":
         case playerPlay === "scissors" && computerPlay === "rock":
         case playerPlay === "paper" && computerPlay === "scissors":
@@ -79,8 +80,8 @@ function gameWinner() {
     else if(computerScore > playerScore){
         console.log(`Game over. Computer won ${computerScore} to ${playerScore}`);
     }
-
     else console.log("Its a tie game.");
+
     playerScore = 0;
     computerScore = 0;
 }
