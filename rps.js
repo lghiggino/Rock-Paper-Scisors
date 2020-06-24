@@ -64,7 +64,7 @@ function quickRound() {
     
 }    
 
-/* play 5 in a row - will need to figure out how to make it best of five, so that it stops at 3 wins or goes to 5 rounds.*/
+/* play 5 in a row */
     function game(){
         let i = 0;
         for (i=0; i<5; i++){
